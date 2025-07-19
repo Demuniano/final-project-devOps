@@ -68,7 +68,7 @@ grafana.ini
 *.pem
 *.key
 *.crt
-*.env.*
+*.env
 .secret
 .secrets/
 

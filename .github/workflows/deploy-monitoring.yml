@@ -2,15 +2,15 @@ name: Deploy Monitoring Stack
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
-  #     - develop
-  #     - 'feature/**'
-  # pull_request:
-  #   branches:
-  #     - main
-  #     - develop
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   deploy-monitoring:

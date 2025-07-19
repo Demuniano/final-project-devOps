@@ -1,8 +1,5 @@
 services:
   app:
-    build:
-      context: ..
-      dockerfile: ../Dockerfile
     image: ${NEXUS_URL}/docker-repo/fastapi-project-app:latest
     container_name: python-app
     ports:

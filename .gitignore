@@ -1,0 +1,75 @@
+# Entornos virtuales de Python
+venv/
+env/
+.venv/
+ENV/
+env.bak/
+.Python
+
+# Archivos de Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+
+# Archivos y carpetas de configuración de IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos y logs de sistema
+.DS_Store
+Thumbs.db
+ehthumbs.db
+*.log
+
+# Dependencias instaladas
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+pip-wheel-metadata/
+
+# Archivos de cobertura y testing
+.tox/
+coverage.*
+.cache
+.pytest_cache/
+.nox/
+
+# Docker
+*.bak
+docker-compose.override.yml
+# Si generas archivos de variables:
+.env
+
+# Nexus data directories (no incluir datos reales en el repo)
+nexus-data/
+nexus-data-backup/
+
+# Prometheus & Grafana data
+prometheus-data/
+grafana-data/
+prometheus.yml
+grafana.ini
+
+# Artefactos de CI/CD
+*.tar
+*.zip
+
+# Otros archivos generados
+*.db
+*.sqlite3
+
+# Configuración de usuarios
+*.pem
+*.key
+*.crt
+*.env.*
+.secret
+.secrets/
+
+.vs

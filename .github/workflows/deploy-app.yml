@@ -26,7 +26,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd /home/${{ secrets.EC2_USER }}/final-project-devOps/Docker
-
+              docker login ${{ secrets.NEXUS_URL }} -u ${{ secrets.NEXUS_USERNAME }} -p ${{ secrets.NEXUS_PASSWORD }}
               git pull
               docker-compose pull app
               docker-compose up -d app

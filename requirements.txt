@@ -2,3 +2,6 @@ fastapi
 uvicorn
 pydantic
 prometheus_client
+pytest
+pytest-asyncio
+httpx

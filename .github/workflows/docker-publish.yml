@@ -1,0 +1,30 @@
+name: Build and Push Docker Image
+
+on:
+  workflow_dispatch:
+  push:
+    # branches:
+    #   - main
+    #   - develop
+    #   - 'feature/**'
+  # pull_request:
+  #   branches:
+  #     - main
+  #     - develop
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to GitHub Container Registry (GHCR)
+        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
+    
+      - name: Build Docker image
+        run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/fastapi-project-app:latest ./app
+
+      - name: Push Docker image
+        run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/fastapi-project-app:latest

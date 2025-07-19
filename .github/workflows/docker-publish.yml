@@ -2,15 +2,6 @@ name: Build and Push Docker Image
 
 on:
   workflow_dispatch:
-  push:
-    # branches:
-    #   - main
-    #   - develop
-    #   - 'feature/**'
-  # pull_request:
-  #   branches:
-  #     - main
-  #     - develop
 
 jobs:
   build-and-push:
@@ -20,11 +11,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Log in to GitHub Container Registry (GHCR)
-        run: echo "${{ secrets.GHCR_TOKEN }}" | docker login ghcr.io -u ${{ secrets.GHCR_USERNAME }} --password-stdin
-    
+      - name: Log in to Nexus Docker Registry
+        run: echo "${{ secrets.NEXUS_PASSWORD }}" | docker login ${{ secrets.NEXUS_URL }} -u ${{ secrets.NEXUS_USERNAME }} --password-stdin
+
       - name: Build Docker image
-        run: docker build -t ghcr.io/${{ secrets.GHCR_USERNAME }}/fastapi-project-app:latest ./app
+        run: docker build -t ${{ secrets.NEXUS_URL }}/docker-repo/fastapi-project-app:latest ./app
 
       - name: Push Docker image
-        run: docker push ghcr.io/${{ secrets.GHCR_USERNAME }}/fastapi-project-app:latest
+        run: docker push ${{ secrets.NEXUS_URL }}/docker-repo/fastapi-project-app:latest

@@ -2,15 +2,15 @@ name: Deploy Monitoring Stack
 
 on:
   workflow_dispatch:
-  # push:
-  #   branches:
-  #     - main
-  #     - develop
-  #     - 'feature/**'
-  # pull_request:
-  #   branches:
-  #     - main
-  #     - develop
+  push:
+    branches:
+      - main
+      - develop
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+      - develop
 
 jobs:
   deploy-monitoring:
@@ -27,6 +27,6 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ec2-user/taller-monitoreo-visualizacion
+            cd /home/${{ secrets.EC2_USER }}/final-project-devOps/Docker
             git pull
             docker-compose up -d prometheus grafana
